@@ -97,7 +97,7 @@ local function registerDutyTarget()
             end,
             onEnter = function()
                 if QBX.PlayerData.job.onduty then
-                    lib.showTextUI("[E] " .. label, {position = 'left-center'})
+                    lib.showTextUI("[E] " .. label, {position = 'right-center'})
                 end
             end,
             onExit = function()
@@ -156,7 +156,7 @@ local function registerStashTarget()
             end,
             onEnter = function()
                 if QBX.PlayerData.job.onduty and QBX.PlayerData.job.type == 'mechanic' then
-                    lib.showTextUI(locale('labels.o_stash'), {position = 'left-center'})
+                    lib.showTextUI(locale('labels.o_stash'), {position = 'right-center'})
                 end
             end,
             onExit = function()
@@ -195,9 +195,9 @@ local function registerGarageZone()
             if QBX.PlayerData.job.onduty and QBX.PlayerData.job.type == 'mechanic' then
                 local inVehicle = cache.vehicle
                 if inVehicle then
-                    lib.showTextUI(locale('labels.h_vehicle'), {position = 'left-center'})
+                    lib.showTextUI(locale('labels.h_vehicle'), {position = 'right-center'})
                 else
-                    lib.showTextUI(locale('labels.g_vehicle'), {position = 'left-center'})
+                    lib.showTextUI(locale('labels.g_vehicle'), {position = 'right-center'})
                 end
             end
         end,
@@ -257,9 +257,9 @@ local function registerVehiclePlateZone(id, plate)
             end
 
             if plate.AttachedVehicle then
-                lib.showTextUI(locale('labels.o_menu'), {position = 'left-center'})
+                lib.showTextUI(locale('labels.o_menu'), {position = 'right-center'})
             elseif cache.vehicle then
-                lib.showTextUI(locale('labels.work_v'), {position = 'left-center'})
+                lib.showTextUI(locale('labels.work_v'), {position = 'right-center'})
             end
         end,
         onExit = function()
