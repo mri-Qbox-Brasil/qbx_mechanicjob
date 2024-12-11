@@ -9,24 +9,24 @@
         "fuel": "Tanque de Combustível",
         "sign_in": "Entrar",
         "sign_off": "Sair",
-        "o_stash": "[E] Abrir Baú",
+        "o_stash": "[E] Abrir Armário",
         "h_vehicle": "[E] Esconder Veículo",
         "g_vehicle": "[E] Pegar Veículo",
         "o_menu": "[E] Abrir Menu",
-        "work_v": "[E] Trabalhar no Veículo",
+        "work_v": "[E] Trabalhar No Veículo",
         "progress_bar": "Reparando %s...",
         "veh_status": "Status do Veículo:",
-        "job_blip": "Mecânico de Autocuidado",
-        "stash": "Baú do Mecânico",
+        "job_blip": "Mecânico de Autocare",
+        "stash": "Armário do Mecânico",
         "status": "Status",
         "vehicle_title": "Veículo: %s",
         "vehicle_list": "Lista de Veículos"
     },
 
     "lift_menu": {
-        "header_menu": "Opções de Veículo",
+        "header_menu": "Opções do Veículo",
         "header_vehdc": "Desconectar Veículo",
-        "desc_vehdc": "Desconectar Veículo do Elevador",
+        "desc_vehdc": "Desanexar Veículo do Elevador",
         "header_stats": "Verificar Status",
         "desc_stats": "Verificar Status do Veículo",
         "header_parts": "Peças do Veículo",
@@ -37,23 +37,23 @@
     "parts_menu": {
         "status": "Status: %s%% / 100.0%%",
         "menu_header": "Menu de Peças",
-        "repair_op": "Reparar: %s %sx",
-        "b_menu": "⬅ Voltar ao Menu",
+        "repair_op": "Reparo: %s %sx",
+        "b_menu": "⬅ Menu Anterior",
         "d_menu": "Voltar ao menu de peças",
         "c_menu": "⬅ Fechar Menu"
     },
 
     "nodamage_menu": {
         "header": "Sem Danos",
-        "bh_menu": "Voltar ao Menu",
-        "bd_menu": "Não há danos nesta parte!",
+        "bh_menu": "Menu Anterior",
+        "bd_menu": "Não Há Danos Nesta Peça!",
         "c_menu": "⬅ Fechar Menu"
     },
 
     "notifications": {
-        "not_enough": "Você não tem o suficiente %s (mín. %sx)",
+        "not_enough": "Você não tem o suficiente de %s (mín. %sx)",
         "not_have": "Você não tem",
-        "not_materials": "Não há materiais suficientes no esconderijo",
+        "not_materials": "Não há materiais suficientes no armário",
         "rep_canceled": "Reparo cancelado",
         "repaired": "foi reparado!",
         "unknown": "Status desconhecido",
@@ -63,9 +63,9 @@
         "outside": "Você deve estar fora do veículo",
         "wrong_seat": "Você não é o motorista ou está em uma bicicleta",
         "not_vehicle": "Você não está em um veículo",
-        "progress_bar": "Reparando veículo..",
+        "progress_bar": "Reparando veículo...",
         "process_canceled": "Processo cancelado",
-        "not_part": "Não é uma parte válida",
-        "partrep":"O(a) %s foi reparado(a)!"
+        "not_part": "Não é uma peça válida",
+        "partrep": "A %s foi reparada!"
     }
 }
