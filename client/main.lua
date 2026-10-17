@@ -88,7 +88,7 @@ local function registerDutyTarget()
             rotation = 338.16,
             debug = config.debugPoly,
             inside = function()
-                if QBX.PlayerData.job.onduty then
+                if QBX.PlayerData.job.type == 'mechanic' then
                     if IsControlJustPressed(0, 38) then
                         TriggerServerEvent("QBCore:ToggleDuty")
                         Wait(500)
@@ -96,7 +96,7 @@ local function registerDutyTarget()
                 end
             end,
             onEnter = function()
-                if QBX.PlayerData.job.onduty then
+                if QBX.PlayerData.job.type == 'mechanic' then
                     lib.showTextUI("[E] " .. label, {position = 'right-center'})
                 end
             end,
@@ -461,6 +461,8 @@ local function spawnListVehicle(model)
 end
 
 local function createBlip()
+    if not sharedConfig.locations.exit then return end
+
     local blip = AddBlipForCoord(sharedConfig.locations.exit.x, sharedConfig.locations.exit.y, sharedConfig.locations.exit.z)
     SetBlipSprite(blip, 446)
     SetBlipDisplay(blip, 4)
@@ -482,7 +484,7 @@ AddEventHandler('onResourceStart', function(resource)
     registerDutyTarget()
     registerStashTarget()
     setVehiclePlateZones()
-    if QBX.PlayerData.job.onduty and QBX.PlayerData.type == 'mechanic' then
+    if QBX.PlayerData.job.onduty and QBX.PlayerData.job.type == 'mechanic' then
         TriggerServerEvent("QBCore:ToggleDuty")
     end
 
@@ -503,7 +505,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     registerDutyTarget()
     registerStashTarget()
     setVehiclePlateZones()
-    if QBX.PlayerData.job.onduty and QBX.PlayerData.type == 'mechanic' then
+    if QBX.PlayerData.job.onduty and QBX.PlayerData.job.type == 'mechanic' then
         TriggerServerEvent("QBCore:ToggleDuty")
     end
 
@@ -518,29 +520,23 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     end)
 end)
 
-RegisterNetEvent('QBCore:Client:OnJobUpdate', function()
+local function updateJobActions()
     deleteTarget(dutyTargetBoxId)
     deleteTarget(stashTargetBoxId)
-
-    if QBX.PlayerData.type ~= 'mechanic' then return end
-
-    registerDutyTarget()
-
-    if not QBX.PlayerData.job.onduty then return end
-    registerStashTarget()
-end)
-
-RegisterNetEvent('QBCore:Client:SetDuty', function()
-    deleteTarget(dutyTargetBoxId)
-    deleteTarget(stashTargetBoxId)
-
-    if QBX.PlayerData.type == 'mechanic' then
-    registerDutyTarget()
-
-    if not QBX.PlayerData.job.onduty then return end
-    registerStashTarget()
+    
+     Wait(2000) -- wait 2s to preventing bug on zone creation interator
+    
+    if QBX.PlayerData.job.type == 'mechanic' then
+        registerDutyTarget()
+    
+        if not QBX.PlayerData.job.onduty then return end
+        registerStashTarget()
     end
-end)
+end
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate', updateJobActions)
+
+RegisterNetEvent('QBCore:Client:SetDuty', updateJobActions)
 
 RegisterNetEvent('qb-vehicletuning:client:SetAttachedVehicle', function(veh, key)
     sharedConfig.plates[key].AttachedVehicle = veh
